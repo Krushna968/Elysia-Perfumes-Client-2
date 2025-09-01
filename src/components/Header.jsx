@@ -1,75 +1,74 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ShoppingBag, Search, User } from 'lucide-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleCart } from '../store/cartSlice.js'
+import LoginModal from './LoginModal.jsx'
 
 const Header = () => {
   const dispatch = useDispatch()
   const { totalItems } = useSelector(state => state.cart)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-gray-800' : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container mx-auto px-6 py-4">
+    <>
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      {/* Top Banner - like BeMinimalist */}
+      <div className="bg-black text-white text-center py-2 text-sm">
+        <span>Buy 2 products and get an exclusive bottle! </span>
+        <span className="ml-4">Enjoy free shipping on every order!</span>
+      </div>
+      
+      {/* Main Header */}
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-serif text-white hover:text-amber-400 transition-colors">
-            <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-              Elysia Perfumes
-            </span>
+          {/* Logo */}
+          <Link to="/" className="text-xl font-bold text-black hover:text-gray-700 transition-colors">
+            Minimalist Perfumes
           </Link>
-          <nav className="hidden md:flex space-x-8">
-            <Link to="/" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">Home</Link>
-            <Link to="/products" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">All Perfumes</Link>
-            <Link to="/products?category=For Him" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">For Him</Link>
-            <Link to="/products?category=For Her" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">For Her</Link>
-            <Link to="/products?category=Unisex" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">Unisex</Link>
+          
+          {/* Navigation - Hidden on mobile, visible on larger screens */}
+          <nav className="hidden md:flex items-center space-x-6 text-sm">
+            <Link to="/products" className="text-gray-700 hover:text-black transition-colors font-medium">Shop All</Link>
+            <Link to="/products?category=Men" className="text-gray-700 hover:text-black transition-colors font-medium">For Men</Link>
+            <Link to="/products?category=Women" className="text-gray-700 hover:text-black transition-colors font-medium">For Women</Link>
+            <Link to="/products?category=Daily Wear" className="text-gray-700 hover:text-black transition-colors font-medium">Daily Wear</Link>
+            <Link to="/products?category=Evening Wear" className="text-gray-700 hover:text-black transition-colors font-medium">Evening</Link>
           </nav>
+          
+          {/* Right Side Icons */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-300 hover:text-amber-400 transition-colors">
+            <button className="text-gray-700 hover:text-black transition-colors">
               <Search size={20} />
             </button>
-            <button className="text-gray-300 hover:text-amber-400 transition-colors">
+            <button 
+              onClick={() => setIsLoginModalOpen(true)}
+              className="text-gray-700 hover:text-black transition-colors"
+            >
               <User size={20} />
             </button>
-            <motion.button
+            <button
               onClick={() => dispatch(toggleCart())}
-              className="relative text-gray-300 hover:text-amber-400 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="relative text-gray-700 hover:text-black transition-colors"
             >
               <ShoppingBag size={20} />
               {totalItems > 0 && (
-                <motion.span
-                  key={totalItems}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-2 -right-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-lg"
-                >
+                <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                   {totalItems}
-                </motion.span>
+                </span>
               )}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
+    
+    <LoginModal 
+      isOpen={isLoginModalOpen} 
+      onClose={() => setIsLoginModalOpen(false)} 
+    />
+    </>
   )
 }
 

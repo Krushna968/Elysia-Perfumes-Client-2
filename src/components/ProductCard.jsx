@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star } from 'lucide-react'
+import { Star, Plus } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
 import { addToCart } from '../store/cartSlice.js'
 import AddToCartToast from './AddToCartToast.jsx'
 
-const ProductCard = ({ product, showAddToCart = false }) => {
+const ProductCard = ({ product, showAddToCart = true }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [isHovered, setIsHovered] = useState(false)
@@ -31,48 +31,78 @@ const ProductCard = ({ product, showAddToCart = false }) => {
   }
 
   return (
-    <motion.div
-      className="bg-gray-800 rounded-lg overflow-hidden cursor-pointer group border border-gray-700 hover:border-amber-500/50 transition-all duration-300"
-      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onClick={handleCardClick}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="relative overflow-hidden">
+    <div className="bg-white border border-gray-200 hover:shadow-sm transition-all duration-200 cursor-pointer group">
+      {/* Product Image */}
+      <div 
+        className="relative bg-gray-50 aspect-[3/4] overflow-hidden"
+        onClick={handleCardClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        
+        {/* Discount Badge */}
+        {product.discount && (
+          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 font-medium">
+            {product.discount}% OFF
+          </div>
+        )}
+        
+        {/* New Badge */}
+        {product.isNew && (
+          <div className="absolute top-2 right-2 bg-black text-white text-xs px-2 py-1 font-medium">
+            NEW
+          </div>
+        )}
+        
+        {/* Add to Cart Button on Hover */}
         <AnimatePresence>
           {isHovered && showAddToCart && (
             <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={handleAddToCart}
-              className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-2 rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg"
+              className="absolute bottom-3 right-3 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
             >
-              Add to Cart
+              <Plus size={16} />
             </motion.button>
           )}
         </AnimatePresence>
       </div>
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-1">
-          <span className="text-xs text-gray-400 uppercase tracking-wide">{product.category}</span>
+      
+      {/* Product Info */}
+      <div className="p-4" onClick={handleCardClick}>
+        <h3 className="font-medium text-gray-900 mb-1 leading-tight">{product.name}</h3>
+        <p className="text-gray-600 text-sm mb-2">{product.shortDescription}</p>
+        
+        {/* Rating */}
+        <div className="flex items-center mb-2">
           <div className="flex items-center">
-            <Star size={14} className="text-yellow-400 fill-current" />
-            <span className="text-sm text-gray-300 ml-1">{product.rating}</span>
+            {[...Array(5)].map((_, i) => (
+              <Star 
+                key={i} 
+                size={12} 
+                className={i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'} 
+              />
+            ))}
           </div>
+          <span className="text-xs text-gray-500 ml-1">({product.reviews})</span>
         </div>
-        <h3 className="font-serif text-lg text-white mb-1">{product.name}</h3>
-        <p className="text-amber-400 font-semibold">₹{product.price.toLocaleString('en-IN')}</p>
+        
+        {/* Pricing */}
+        <div className="flex items-center space-x-2">
+          <span className="text-lg font-bold text-gray-900">₹{product.price}</span>
+          {product.originalPrice && (
+            <span className="text-sm text-gray-500 line-through">₹{product.originalPrice}</span>
+          )}
+        </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

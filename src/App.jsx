@@ -8,31 +8,40 @@ import PageTransition from './components/PageTransition.jsx'
 import Homepage from './pages/Homepage.jsx'
 import ProductsPage from './pages/ProductsPage.jsx'
 import ProductDetailPage from './pages/ProductDetailPage.jsx'
+import AccountPage from './pages/AccountPage.jsx'
+import CheckoutPage from './pages/CheckoutPage.jsx'
 
 function App() {
   return (
     <Router>
-      <div className="bg-gray-900 min-h-screen">
+      <div className="bg-white min-h-screen font-sans">
         <Header />
         <CartSidebar />
-        <main>
+        <main className="pt-16">
           <PageTransition>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/account" element={<AccountPage />} />
             </Routes>
           </PageTransition>
         </main>
         <Footer />
         <Toaster
-          position="top-right"
+          position="top-center"
           toastOptions={{
-            duration: 3000,
+            duration: 4000,
             style: {
-              background: '#1f2937',
-              color: '#f9fafb',
-              borderRadius: '8px',
+              background: '#ffffff',
+              color: '#1f2937',
+              borderRadius: '12px',
+              border: '1px solid #e5e7eb',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+              padding: '16px 20px',
+              minWidth: '320px',
+              maxWidth: '500px',
             },
             success: {
               iconTheme: {
