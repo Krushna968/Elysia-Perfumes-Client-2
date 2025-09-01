@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# 🌸 Elysia Perfumes - Premium E-commerce Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sophisticated e-commerce platform for premium perfumes built with modern web technologies.
 
-## Available Scripts
+![Elysia Perfumes](https://img.shields.io/badge/Status-Live-brightgreen)
+![React](https://img.shields.io/badge/React-18.3.1-blue)
+![Vite](https://img.shields.io/badge/Vite-6.0.3-purple)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.12-cyan)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🎨 **Premium Dark Theme Design**
+- Modern dark color palette with amber/orange accents
+- Gradient backgrounds and premium visual effects
+- Responsive design optimized for all devices
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🛒 **Advanced E-commerce Features**
+- Interactive shopping cart with real-time updates
+- Smart toast notifications with "View Cart" buttons
+- Product filtering and sorting capabilities
+- Detailed product pages with image galleries
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 💫 **Smooth Animations & Interactions**
+- Floating particle effects on homepage
+- Smooth page transitions with Framer Motion
+- Hover effects and micro-interactions
+- Animated testimonials carousel
 
-### `npm test`
+### 💰 **Localized for India**
+- Prices displayed in Indian Rupees (₹)
+- Indian number formatting (e.g., ₹7,389)
+- Realistic pricing conversion
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🖼️ **Reliable Image Loading**
+- Working placeholder images via Picsum
+- Consistent product imagery
+- Optimized image loading
 
-### `npm run build`
+## 🚀 Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend Framework:** React 18.3.1
+- **Build Tool:** Vite 6.0.3
+- **Styling:** Tailwind CSS 4.1.12
+- **Animations:** Framer Motion 12.23.12
+- **State Management:** Redux Toolkit 2.8.2
+- **Routing:** React Router DOM 7.8.2
+- **Icons:** Lucide React 0.542.0
+- **Notifications:** React Hot Toast
+- **Type:** ES Modules (ESM)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 Installation & Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/Client2-Elysia-Perfumes.git
+   cd Client2-Elysia-Perfumes
+   ```
 
-### `npm run eject`
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Preview the production build:**
+   ```bash
+   npm run preview
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎯 Key Features Implemented
 
-## Learn More
+- ✅ **Working Images**: Replaced broken URLs with reliable Picsum placeholders
+- ✅ **Indian Currency**: All prices converted to ₹ with proper formatting
+- ✅ **Toast Notifications**: Smart notifications with cart access buttons
+- ✅ **Premium Dark Theme**: Sophisticated color scheme with gradients
+- ✅ **Enhanced Animations**: Particle effects, smooth transitions, hover states
+- ✅ **Responsive Design**: Mobile-first approach with tablet/desktop optimizations
+- ✅ **Modern Architecture**: Vite + React + Tailwind v4 setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📱 Pages & Routes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `/` - Homepage with hero section and bestsellers
+- `/products` - Complete product catalog with filtering
+- `/products?category=For+Him` - Men's fragrances
+- `/products?category=For+Her` - Women's fragrances  
+- `/products?category=Unisex` - Unisex fragrances
+- `/product/:id` - Individual product details
 
-### Code Splitting
+## 🛠️ Development Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `npm run dev` - Start development server (http://localhost:3000)
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests (Vitest)
 
-### Analyzing the Bundle Size
+## 🌐 Browser Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Elysia Perfumes** - *Crafted Scents, Defining Moments*
