@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Star, Plus, Minus } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
-import { addToCart } from '../store/cartSlice.jsx'
+import { addToCart } from '../store/cartSlice.js'
 import { mockPerfumes } from '../mockData'
 import AddToCartToast from '../components/AddToCartToast.jsx'
 

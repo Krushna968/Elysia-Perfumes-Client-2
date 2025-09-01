@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ShoppingBag, Search, User } from 'lucide-react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleCart } from '../store/cartSlice.jsx'
+import { toggleCart } from '../store/cartSlice.js'
 
 const Header = () => {
   const dispatch = useDispatch()

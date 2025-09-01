@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus, X } from 'lucide-react'
 import { useSelector, useDispatch } from 'react-redux'
-import { closeCart, removeFromCart, updateQuantity } from '../store/cartSlice.jsx'
+import { closeCart, removeFromCart, updateQuantity } from '../store/cartSlice.js'
 
 const CartSidebar = () => {
   const dispatch = useDispatch()

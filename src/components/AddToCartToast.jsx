@@ -1,7 +1,7 @@
 import React from 'react'
 import { ShoppingBag } from 'lucide-react'
 import { useDispatch } from 'react-redux'
-import { toggleCart } from '../store/cartSlice.jsx'
+import { toggleCart } from '../store/cartSlice.js'
 
 const AddToCartToast = ({ product, onClose }) => {
   const dispatch = useDispatch()
