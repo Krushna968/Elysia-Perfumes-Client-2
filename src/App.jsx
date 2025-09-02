@@ -10,6 +10,7 @@ import ProductsPage from './pages/ProductsPage.jsx'
 import ProductDetailPage from './pages/ProductDetailPage.jsx'
 import AccountPage from './pages/AccountPage.jsx'
 import CheckoutPage from './pages/CheckoutPage.jsx'
+import ApiTestPage from './pages/ApiTestPage.jsx'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/account" element={<AccountPage />} />
+              <Route path="/api-test" element={<ApiTestPage />} />
             </Routes>
           </PageTransition>
         </main>

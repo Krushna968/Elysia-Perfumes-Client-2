@@ -35,6 +35,8 @@ const Header = () => {
             <Link to="/products?category=Women" className="text-gray-700 hover:text-black transition-colors font-medium">For Women</Link>
             <Link to="/products?category=Daily Wear" className="text-gray-700 hover:text-black transition-colors font-medium">Daily Wear</Link>
             <Link to="/products?category=Evening Wear" className="text-gray-700 hover:text-black transition-colors font-medium">Evening</Link>
+            {/* Developer Link */}
+            <Link to="/api-test" className="text-blue-600 hover:text-blue-800 transition-colors text-xs font-mono bg-blue-50 px-2 py-1 rounded">API Test</Link>
           </nav>
           
           {/* Right Side Icons */}
