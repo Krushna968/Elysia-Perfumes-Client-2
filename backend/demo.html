@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Elysia Perfumes Backend - API Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #764ba2;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .status {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+        .endpoint h3 {
+            margin-top: 0;
+            color: #764ba2;
+        }
+        .endpoint-url {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .test-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .test-btn:hover {
+            background: #5a3a7a;
+        }
+        .response {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+        .feature-list {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Elysia Perfumes Backend API</h1>
+        
+        <div class="status">
+            ✅ Server is LIVE and running on http://localhost:5000
+        </div>
+
+        <div class="feature-list">
+            <h3>🚀 What's Working:</h3>
+            <ul>
+                <li>✅ Express.js server with security middleware</li>
+                <li>✅ JWT authentication system</li>
+                <li>✅ Product management APIs</li>
+                <li>✅ Order processing system</li>
+                <li>✅ Payment integration (COD)</li>
+                <li>✅ Admin panel endpoints</li>
+                <li>✅ Rate limiting & CORS protection</li>
+                <li>✅ Error handling & logging</li>
+            </ul>
+        </div>
+
+        <h2>📡 Test Your API Endpoints:</h2>
+        
+        <div class="endpoints">
+            <div class="endpoint">
+                <h3>🏥 Health Check</h3>
+                <p>Check if the server is running</p>
+                <div class="endpoint-url">GET /health</div>
+                <a href="http://localhost:5000/health" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/health', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>💳 Payment Methods</h3>
+                <p>Get available payment methods</p>
+                <div class="endpoint-url">GET /api/payments/methods</div>
+                <a href="http://localhost:5000/api/payments/methods" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/payments/methods', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>📂 Categories</h3>
+                <p>Get product categories</p>
+                <div class="endpoint-url">GET /api/categories</div>
+                <a href="http://localhost:5000/api/categories" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/categories', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>🛍️ Products</h3>
+                <p>Browse products (requires database)</p>
+                <div class="endpoint-url">GET /api/products</div>
+                <a href="http://localhost:5000/api/products" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/products', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>🚚 Shipping</h3>
+                <p>Calculate shipping costs</p>
+                <div class="endpoint-url">GET /api/shipping/calculate</div>
+                <a href="http://localhost:5000/api/shipping/calculate" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/shipping/calculate', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>📧 Email</h3>
+                <p>Newsletter signup</p>
+                <div class="endpoint-url">POST /api/email/newsletter/subscribe</div>
+                <button class="test-btn" onclick="testEndpoint('/api/email/newsletter/subscribe', this, 'POST')">Test Subscribe</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>📄 Legal</h3>
+                <p>Privacy policy endpoint</p>
+                <div class="endpoint-url">GET /api/legal/privacy-policy</div>
+                <a href="http://localhost:5000/api/legal/privacy-policy" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/legal/privacy-policy', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+
+            <div class="endpoint">
+                <h3>📊 Analytics</h3>
+                <p>Dashboard analytics</p>
+                <div class="endpoint-url">GET /api/analytics/dashboard</div>
+                <a href="http://localhost:5000/api/analytics/dashboard" target="_blank" class="test-btn">Test in Browser</a>
+                <button class="test-btn" onclick="testEndpoint('/api/analytics/dashboard', this)">Test with JS</button>
+                <div class="response"></div>
+            </div>
+        </div>
+
+        <div class="feature-list">
+            <h3>🔑 Admin Endpoints (Require Authentication):</h3>
+            <ul>
+                <li><code>GET /api/admin/dashboard</code> - Admin dashboard</li>
+                <li><code>GET /api/admin/products</code> - Manage products</li>
+                <li><code>POST /api/admin/products</code> - Create products</li>
+                <li><code>PUT /api/admin/products/:id</code> - Update products</li>
+                <li><code>DELETE /api/admin/products/:id</code> - Delete products</li>
+            </ul>
+        </div>
+
+        <div class="feature-list">
+            <h3>🔐 Auth Endpoints:</h3>
+            <ul>
+                <li><code>POST /api/auth/register</code> - User registration</li>
+                <li><code>POST /api/auth/login</code> - User login</li>
+                <li><code>POST /api/auth/admin/login</code> - Admin login</li>
+                <li><code>GET /api/auth/me</code> - Get current user</li>
+                <li><code>PUT /api/auth/profile</code> - Update profile</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🎯 Your <strong>Elysia Perfumes Backend</strong> is fully functional!</p>
+            <p>Server running on: <strong>http://localhost:5000</strong></p>
+            <p>Ready for frontend integration and production deployment! 🚀</p>
+        </div>
+    </div>
+
+    <script>
+        async function testEndpoint(endpoint, button, method = 'GET') {
+            const responseDiv = button.parentElement.querySelector('.response');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Testing...';
+            button.disabled = true;
+            responseDiv.style.display = 'block';
+            
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                };
+                
+                if (method === 'POST' && endpoint.includes('newsletter')) {
+                    options.body = JSON.stringify({
+                        email: 'test@example.com'
+                    });
+                }
+                
+                const response = await fetch(`http://localhost:5000${endpoint}`, options);
+                const data = await response.json();
+                
+                responseDiv.innerHTML = `
+                    <strong>Status:</strong> ${response.status} ${response.statusText}<br>
+                    <strong>Response:</strong><br>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+                responseDiv.style.background = response.ok ? '#d4edda' : '#f8d7da';
+            } catch (error) {
+                responseDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+                responseDiv.style.background = '#f8d7da';
+            }
+            
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+    </script>
+</body>
+</html>
